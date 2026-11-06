@@ -1,1326 +1,177 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#171318">
 <title>FITSCULPT | Moda Fitness</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
---pink:#f04478;
---dark:#171318;
---light:#faf7f9;
---gray:#777;
-}
-body{
-font-family:Arial,sans-serif;
-background:var(--light);
-color:var(--dark);
-}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;font-family:inherit}
-.container{width:92%;max-width:1180px;margin:auto}
-
-/* CABEÇALHO */
-.topbar{
-background:var(--dark);
-color:white;
-text-align:center;
-padding:10px;
-font-size:11px;
-letter-spacing:1px;
-}
-.topbar span{color:#ff8eae}
-header{
-background:white;
-position:sticky;
-top:0;
-z-index:20;
-box-shadow:0 2px 12px #0000000c;
-}
-.nav{
-height:75px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-}
-.logo{
-font-size:26px;
-font-weight:900;
-letter-spacing:-1px;
-}
-.logo span{color:var(--pink)}
-.links{
-display:flex;
-gap:25px;
-font-size:13px;
-font-weight:bold;
-}
-.links a:hover{color:var(--pink)}
-.actions{display:flex;gap:8px}
-.icon{
-border:0;
-background:#f7f0f3;
-border-radius:50%;
-width:40px;
-height:40px;
-font-size:18px;
-position:relative;
-}
-.count{
-position:absolute;
-top:-4px;
-right:-4px;
-background:var(--pink);
-color:white;
-font-size:10px;
-padding:4px 6px;
-border-radius:20px;
-}
-
-/* BANNER */
-.hero{
-min-height:570px;
-display:flex;
-align-items:center;
-color:white;
-background:
-linear-gradient(90deg,#151015e8,#15101580,#15101515),
-url("https://images.pexels.com/photos/6539879/pexels-photo-6539879.jpeg?auto=compress&cs=tinysrgb&w=1800")
-center/cover;
-}
-.hero-content{max-width:650px;padding:70px 0}
-.tagline{
-color:#ff9bb7;
-font-weight:bold;
-font-size:12px;
-letter-spacing:2px;
-}
-.hero h1{
-font-size:clamp(42px,6vw,75px);
-line-height:1;
-margin:20px 0;
-}
-.hero h1 span{color:#ff80a6}
-.hero p{
-line-height:1.8;
-font-size:15px;
-max-width:500px;
-color:#eee;
-}
-.btn{
-display:inline-block;
-padding:15px 23px;
-border-radius:7px;
-font-size:12px;
-font-weight:bold;
-text-transform:uppercase;
-border:0;
-}
-.btn-pink{background:var(--pink);color:white}
-.btn-pink:hover{background:#d92f66}
-.btn-white{background:white;color:var(--dark)}
-.hero-buttons{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-
-/* BENEFÍCIOS */
-.benefits{
-background:white;
-padding:25px 0;
-}
-.benefit-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-}
-.benefit{
-display:flex;
-align-items:center;
-gap:12px;
-font-size:12px;
-font-weight:bold;
-}
-.benefit span{
-background:#fff0f4;
-padding:13px;
-border-radius:50%;
-font-size:20px;
-}
-
-/* SEÇÕES */
-section{padding:70px 0}
-.section-title{text-align:center;margin-bottom:35px}
-.section-title small{
-color:var(--pink);
-font-weight:bold;
-letter-spacing:2px;
-}
-.section-title h2{
-font-size:32px;
-margin-top:10px;
-}
-
-/* CATEGORIAS */
-.categories{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-}
-.category{
-height:290px;
-position:relative;
-overflow:hidden;
-border-radius:12px;
-cursor:pointer;
-}
-.category img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:.4s;
-}
-.category:hover img{transform:scale(1.08)}
-.category:after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(transparent,#000b);
-}
-.category div{
-position:absolute;
-bottom:20px;
-left:18px;
-z-index:2;
-color:white;
-}
-.category h3{font-size:19px}
-
-/* PRODUTOS */
-.products-section{background:white}
-.filters{
-display:flex;
-justify-content:center;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:25px;
-}
-.filter{
-padding:10px 17px;
-border:1px solid #eee;
-border-radius:25px;
-background:white;
-font-size:12px;
-font-weight:bold;
-}
-.filter.active,.filter:hover{
-background:var(--dark);
-color:white;
-}
-.sort{
-display:block;
-margin:0 0 25px auto;
-padding:11px;
-border:1px solid #eee;
-border-radius:7px;
-}
-.product-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
-.product{
-border:1px solid #eee;
-border-radius:12px;
-overflow:hidden;
-background:white;
-transition:.3s;
-}
-.product:hover{
-transform:translateY(-5px);
-box-shadow:0 12px 30px #00000012;
-}
-.product-image{
-height:280px;
-position:relative;
-overflow:hidden;
-cursor:pointer;
-}
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-.badge{
-position:absolute;
-top:12px;
-left:12px;
-background:var(--dark);
-color:white;
-padding:7px 10px;
-font-size:9px;
-border-radius:20px;
-}
-.favorite{
-position:absolute;
-right:12px;
-top:12px;
-background:white;
-border:0;
-border-radius:50%;
-width:35px;
-height:35px;
-font-size:18px;
-}
-.favorite.active{color:var(--pink)}
-.product-info{padding:15px}
-.product-info small{color:var(--pink);font-weight:bold}
-.product-info h3{font-size:13px;margin:8px 0}
-.stars{color:#e5a52e;font-size:12px}
-.price{
-font-size:18px;
-font-weight:bold;
-margin-top:12px;
-}
-.old-price{
-color:#aaa;
-font-size:11px;
-text-decoration:line-through;
-}
-.product-bottom{
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-.add{
-background:var(--dark);
-color:white;
-border:0;
-border-radius:8px;
-width:38px;
-height:38px;
-font-size:22px;
-}
-.add:hover{background:var(--pink)}
-
-/* BANNER SECUNDÁRIO */
-.promo{
-display:grid;
-grid-template-columns:1fr 1fr;
-background:var(--dark);
-color:white;
-}
-.promo img{
-width:100%;
-height:350px;
-object-fit:cover;
-}
-.promo-text{
-padding:50px;
-align-self:center;
-}
-.promo-text h2{
-font-size:35px;
-margin:15px 0;
-}
-.promo-text p{
-line-height:1.8;
-color:#ddd;
-margin-bottom:20px;
-}
-
-/* DEPOIMENTOS */
-.testimonials{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-}
-.review{
-background:white;
-border:1px solid #eee;
-border-radius:12px;
-padding:25px;
-}
-.review p{
-font-size:13px;
-line-height:1.8;
-margin:15px 0;
-color:#666;
-}
-
-/* RODAPÉ */
-footer{
-background:var(--dark);
-color:white;
-padding:50px 0 20px;
-}
-.footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:25px;
-}
-footer h3,footer h4{margin-bottom:15px}
-footer p,footer a{
-font-size:12px;
-line-height:2;
-color:#c5bbc2;
-}
-footer a:hover{color:#ff8eae}
-.footer-links{display:flex;flex-direction:column}
-.copyright{
-text-align:center;
-border-top:1px solid #444;
-margin-top:30px;
-padding-top:20px;
-font-size:11px;
-color:#aaa;
-}
-
-/* CARRINHO */
-.overlay{
-position:fixed;
-inset:0;
-background:#0009;
-z-index:40;
-display:none;
-}
-.overlay.show{display:block}
-.drawer{
-position:fixed;
-right:-450px;
-top:0;
-height:100%;
-width:min(420px,100%);
-background:white;
-z-index:41;
-transition:.3s;
-display:flex;
-flex-direction:column;
-}
-.drawer.show{right:0}
-.drawer-head{
-padding:20px;
-border-bottom:1px solid #eee;
-display:flex;
-justify-content:space-between;
-}
-.drawer-body{padding:18px;overflow:auto;flex:1}
-.drawer-foot{
-padding:20px;
-border-top:1px solid #eee;
-}
-.close{
-border:0;
-background:#f5f0f3;
-width:32px;
-height:32px;
-border-radius:50%;
-font-size:20px;
-}
-.cart-item{
-display:flex;
-gap:12px;
-padding:12px 0;
-border-bottom:1px solid #eee;
-}
-.cart-item img{
-width:75px;
-height:85px;
-object-fit:cover;
-border-radius:7px;
-}
-.cart-info{flex:1;font-size:12px}
-.cart-info b{display:block;margin-bottom:7px}
-.quantity{
-display:flex;
-align-items:center;
-gap:9px;
-margin-top:8px;
-}
-.quantity button{
-border:1px solid #eee;
-background:white;
-width:25px;
-height:25px;
-}
-.remove{
-border:0;
-background:none;
-color:#d44;
-font-size:11px;
-}
-.total{
-display:flex;
-justify-content:space-between;
-font-weight:bold;
-margin-bottom:15px;
-}
-
-/* MODAL */
-.modal{
-position:fixed;
-inset:0;
-z-index:60;
-background:#0009;
-display:none;
-align-items:center;
-justify-content:center;
-padding:15px;
-}
-.modal.show{display:flex}
-.modal-box{
-background:white;
-border-radius:12px;
-padding:25px;
-width:min(650px,100%);
-max-height:90vh;
-overflow:auto;
-position:relative;
-}
-.modal-close{
-position:absolute;
-right:12px;
-top:12px;
-}
-.modal-product{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-.modal-product img{
-width:100%;
-border-radius:8px;
-}
-.sizes{
-display:flex;
-gap:8px;
-margin:15px 0;
-}
-.size{
-padding:10px 13px;
-border:1px solid #ddd;
-background:white;
-border-radius:6px;
-}
-.size.active{
-background:var(--dark);
-color:white;
-}
-
-/* RESPONSIVO */
-@media(max-width:900px){
-.links{gap:12px}
-.product-grid{grid-template-columns:repeat(2,1fr)}
-.categories{grid-template-columns:repeat(2,1fr)}
-.benefit-grid{grid-template-columns:repeat(2,1fr)}
-.footer-grid{grid-template-columns:repeat(2,1fr)}
-}
+body{font-family:Arial,sans-serif;background:#101010;color:#fff}
+header{background:#080808;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;border-bottom:1px solid #292929}
+.logo{font-size:27px;font-weight:bold;letter-spacing:3px;color:#ff3e91}
+.logo span{color:white}
+header a{color:white;text-decoration:none;margin-left:18px;font-size:14px}
+.banner{padding:75px 20px;text-align:center;background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.35)),url('https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg') center/cover}
+.banner h1{font-size:42px;margin-bottom:15px}
+.banner p{font-size:17px;color:#eee;margin-bottom:25px}
+.botao{display:inline-block;background:#ff3e91;color:white;padding:13px 25px;border-radius:5px;text-decoration:none;font-weight:bold}
+.container{padding:45px 6%;max-width:1400px;margin:auto}
+.titulo{text-align:center;font-size:27px;margin-bottom:10px}
+.subtitulo{text-align:center;color:#aaa;margin-bottom:35px}
+.categorias{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:35px}
+.categorias a{border:1px solid #444;padding:10px 18px;color:white;text-decoration:none;border-radius:25px;font-size:13px}
+.categorias a:hover{background:#ff3e91;border-color:#ff3e91}
+.produtos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.produto{background:#1b1b1b;border:1px solid #303030;border-radius:10px;overflow:hidden;transition:.3s}
+.produto:hover{transform:translateY(-5px);border-color:#ff3e91}
+.produto img{width:100%;height:280px;object-fit:cover;display:block}
+.info{padding:18px}
+.info h3{font-size:17px;margin-bottom:9px}
+.descricao{font-size:13px;color:#aaa;line-height:1.5;min-height:40px;margin-bottom:14px}
+.preco{font-size:23px;font-weight:bold;color:#ff3e91;margin-bottom:17px}
+.comprar{display:block;text-align:center;background:#ff3e91;color:white;text-decoration:none;padding:12px;border-radius:5px;font-weight:bold;font-size:13px}
+.comprar:hover{background:#e52b7e}
+.destaque{background:#191919;padding:45px 20px;text-align:center;margin-top:45px}
+.destaque h2{font-size:26px;margin-bottom:12px}
+.destaque p{color:#bbb;margin-bottom:22px}
+footer{background:#080808;padding:35px 20px;text-align:center;color:#999;margin-top:45px}
+footer strong{color:#ff3e91}
+footer a{color:#ff3e91;text-decoration:none;margin:0 8px}
 @media(max-width:600px){
-.nav{height:65px}
-.links{display:none}
-.logo{font-size:21px}
-.hero{min-height:520px}
-.hero h1{font-size:45px}
-.hero-buttons .btn{width:100%;text-align:center}
-.category{height:210px}
-.product-image{height:220px}
-.product-info{padding:11px}
-.product-info h3{font-size:12px}
-.product-grid{gap:10px}
-.promo{grid-template-columns:1fr}
-.promo img{height:230px}
-.promo-text{padding:30px}
-.promo-text h2{font-size:27px}
-.testimonials{grid-template-columns:1fr}
-.footer-grid{grid-template-columns:1fr 1fr}
-.section-title h2{font-size:25px}
-.benefit{font-size:10px}
+header{justify-content:center;text-align:center}
+header nav{width:100%}
+header a{margin:0 8px}
+.banner{padding:55px 15px}
+.banner h1{font-size:30px}
+.container{padding:35px 15px}
+.produtos{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.produto img{height:190px}
+.info{padding:12px}
+.info h3{font-size:14px}
+.descricao{font-size:12px;min-height:55px}
+.preco{font-size:19px}
+.comprar{padding:11px 5px;font-size:11px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-FITSCULPT ACTIVEWEAR <span>• SUA MELHOR VERSÃO COMEÇA AQUI</span>
-</div>
-
 <header>
-<div class="container nav">
-<a href="#inicio" class="logo">FIT<span>SCULPT</span></a>
-
-<nav class="links">
+<div class="logo">FIT<span>SCULPT</span></div>
+<nav>
 <a href="#inicio">Início</a>
-<a href="#categorias">Categorias</a>
-<a href="#produtos">Coleção</a>
+<a href="#produtos">Produtos</a>
 <a href="#sobre">Sobre</a>
-<a href="#contato">Contato</a>
 </nav>
-
-<div class="actions">
-<button class="icon" onclick="buscar()">⌕</button>
-<button class="icon" onclick="mostrarFavoritos()">♡</button>
-<button class="icon" onclick="abrirCarrinho()">🛍<span class="count" id="contador">0</span></button>
-</div>
-</div>
 </header>
 
-<main>
+<section class="banner" id="inicio">
+<h1>SEU CORPO, SUA MELHOR VERSÃO</h1>
+<p>Estilo, conforto e desempenho para acompanhar sua evolução.</p>
+<a href="#produtos" class="botao">VER COLEÇÃO</a>
+</section>
 
-<section class="hero" id="inicio">
-<div class="container">
-<div class="hero-content">
-<div class="tagline">MODA FITNESS • CONFORTO • ATITUDE</div>
-<h1>SEU MOVIMENTO.<br>SUA <span>FORÇA.</span><br>SEU ESTILO.</h1>
-<p>Vista a confiança que acompanha cada conquista. Descubra peças fitness pensadas para acompanhar você em todos os movimentos.</p>
-<div class="hero-buttons">
-<a href="#produtos" class="btn btn-pink">EXPLORAR COLEÇÃO →</a>
-<a href="#categorias" class="btn btn-white">VER CATEGORIAS</a>
+<section class="container" id="produtos">
+<h2 class="titulo">NOSSA COLEÇÃO</h2>
+<p class="subtitulo">Encontre o estilo ideal para seus treinos.</p>
+
+<div class="categorias">
+<a href="#produtos">Todos</a>
+<a href="#leggings">Leggings</a>
+<a href="#tops">Tops</a>
+<a href="#conjuntos">Conjuntos</a>
+<a href="#acessorios">Acessórios</a>
+</div>
+
+<div class="produtos">
+
+<!-- PRODUTO 1 -->
+<div class="produto" id="leggings">
+<img src="https://images.pexels.com/photos/4498606/pexels-photo-4498606.jpeg" alt="Legging fitness feminina">
+<div class="info">
+<h3>Legging Fitness Premium</h3>
+<p class="descricao">Conforto, elasticidade e liberdade de movimento para seus treinos.</p>
+<p class="preco">R$ 89,90</p>
+<a class="comprar" href="https://SEU-LINK-DO-PRODUTO-1.com" target="_blank">COMPRAR</a>
 </div>
 </div>
+
+<!-- PRODUTO 2 -->
+<div class="produto" id="tops">
+<img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg" alt="Top fitness">
+<div class="info">
+<h3>Top Fitness Confort</h3>
+<p class="descricao">Design moderno com sustentação e conforto para atividades físicas.</p>
+<p class="preco">R$ 59,90</p>
+<a class="comprar" href="https://SEU-LINK-DO-PRODUTO-2.com" target="_blank">COMPRAR</a>
+</div>
+</div>
+
+<!-- PRODUTO 3 -->
+<div class="produto" id="conjuntos">
+<img src="https://images.pexels.com/photos/6456300/pexels-photo-6456300.jpeg" alt="Conjunto fitness">
+<div class="info">
+<h3>Conjunto Fitness Style</h3>
+<p class="descricao">Conjunto moderno para treinar com estilo e confiança.</p>
+<p class="preco">R$ 139,90</p>
+<a class="comprar" href="https://SEU-LINK-DO-PRODUTO-3.com" target="_blank">COMPRAR</a>
+</div>
+</div>
+
+<!-- PRODUTO 4 -->
+<div class="produto">
+<img src="https://images.pexels.com/photos/4325460/pexels-photo-4325460.jpeg" alt="Roupa esportiva">
+<div class="info">
+<h3>Look Fitness Feminino</h3>
+<p class="descricao">Peças versáteis para academia, caminhada e rotina esportiva.</p>
+<p class="preco">R$ 99,90</p>
+<a class="comprar" href="https://SEU-LINK-DO-PRODUTO-4.com" target="_blank">COMPRAR</a>
+</div>
+</div>
+
+<!-- PRODUTO 5 -->
+<div class="produto" id="acessorios">
+<img src="https://images.pexels.com/photos/4397840/pexels-photo-4397840.jpeg" alt="Acessórios fitness">
+<div class="info">
+<h3>Acessórios Fitness</h3>
+<p class="descricao">Itens práticos para deixar sua rotina de exercícios ainda melhor.</p>
+<p class="preco">R$ 39,90</p>
+<a class="comprar" href="https://SEU-LINK-DO-PRODUTO-5.com" target="_blank">COMPRAR</a>
+</div>
+</div>
+
+<!-- PRODUTO 6 -->
+<div class="produto">
+<img src="https://images.pexels.com/photos/3763867/pexels-photo-3763867.jpeg" alt="Moda fitness">
+<div class="info">
+<h3>Short Fitness Premium</h3>
+<p class="descricao">Leveza e flexibilidade para acompanhar seus movimentos.</p>
+<p class="preco">R$ 69,90</p>
+<a class="comprar" href="https://SEU-LINK-DO-PRODUTO-6.com" target="_blank">COMPRAR</a>
+</div>
+</div>
+
 </div>
 </section>
 
-<section class="benefits">
-<div class="container benefit-grid">
-<div class="benefit"><span>♡</span>Conforto em movimento</div>
-<div class="benefit"><span>✦</span>Estilo e personalidade</div>
-<div class="benefit"><span>✓</span>Compra simplificada</div>
-<div class="benefit"><span>↗</span>Atendimento online</div>
-</div>
+<section class="destaque" id="sobre">
+<h2>FITSCULPT — VISTA SUA EVOLUÇÃO</h2>
+<p>Moda fitness para quem busca conforto, qualidade e personalidade.</p>
+<a href="#produtos" class="botao">CONHEÇA OS PRODUTOS</a>
 </section>
 
-<section id="categorias">
-<div class="container">
-<div class="section-title">
-<small>ENCONTRE SEU ESTILO</small>
-<h2>ESCOLHA SUA CATEGORIA</h2>
-</div>
-
-<div class="categories">
-<div class="category" onclick="filtrar('Leggings')">
-<img src="https://images.pexels.com/photos/6456300/pexels-photo-6456300.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Mulher praticando exercício">
-<div><h3>LEGGINGS</h3></div>
-</div>
-
-<div class="category" onclick="filtrar('Tops')">
-<img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Mulher treinando">
-<div><h3>TOPS</h3></div>
-</div>
-
-<div class="category" onclick="filtrar('Conjuntos')">
-<img src="https://images.pexels.com/photos/8436550/pexels-photo-8436550.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Treino fitness">
-<div><h3>CONJUNTOS</h3></div>
-</div>
-
-<div class="category" onclick="filtrar('Shorts')">
-<img src="https://images.pexels.com/photos/1537635/pexels-photo-1537635.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Corrida ao ar livre">
-<div><h3>SHORTS</h3></div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="products-section" id="produtos">
-<div class="container">
-<div class="section-title">
-<small>COLEÇÃO EXCLUSIVA</small>
-<h2>DESTAQUES FITSCULPT</h2>
-</div>
-
-<div class="filters">
-<button class="filter active" onclick="filtrar('Todos',this)">Todos</button>
-<button class="filter" onclick="filtrar('Leggings',this)">Leggings</button>
-<button class="filter" onclick="filtrar('Tops',this)">Tops</button>
-<button class="filter" onclick="filtrar('Conjuntos',this)">Conjuntos</button>
-<button class="filter" onclick="filtrar('Shorts',this)">Shorts</button>
-</div>
-
-<select class="sort" id="ordenar" onchange="renderizar()">
-<option value="padrao">Destaques</option>
-<option value="menor">Menor preço</option>
-<option value="maior">Maior preço</option>
-</select>
-
-<div class="product-grid" id="listaProdutos"></div>
-</div>
-</section>
-
-<section class="promo" id="sobre">
-<img src="https://images.pexels.com/photos/8436550/pexels-photo-8436550.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pessoas praticando exercícios">
-<div class="promo-text">
-<div class="tagline">MAIS QUE ROUPA. É MOVIMENTO.</div>
-<h2>SUA FORÇA MERECE SER CELEBRADA.</h2>
-<p>A FITSCULPT acredita na liberdade, na confiança e na alegria de cuidar de si. Escolha seu look e encontre seu próprio ritmo.</p>
-<a href="#produtos" class="btn btn-pink">ENCONTRAR MEU LOOK</a>
-</div>
-</section>
-
-<section>
-<div class="container">
-<div class="section-title">
-<small>COMUNIDADE FITSCULPT</small>
-<h2>INSPIRAÇÃO QUE MOVE</h2>
-</div>
-<div class="testimonials">
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>O melhor treino é aquele em que a gente se sente bem consigo mesma. Um passo de cada vez!</p>
-<strong>Comunidade FITSCULPT</strong>
-</div>
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>Movimento também é autocuidado. Vista o que faz você se sentir confiante.</p>
-<strong>Comunidade FITSCULPT</strong>
-</div>
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>Não existe ritmo perfeito. Existe o seu ritmo. Cada conquista merece ser celebrada!</p>
-<strong>Comunidade FITSCULPT</strong>
-</div>
-</div>
-</div>
-</section>
-
-</main>
-
-<footer id="contato">
-<div class="container">
-<div class="footer-grid">
-<div>
-<h3 class="logo">FIT<span>SCULPT</span></h3>
-<p>Moda fitness para acompanhar sua força, seu movimento e seu estilo.</p>
-</div>
-<div>
-<h4>NAVEGAÇÃO</h4>
-<div class="footer-links">
-<a href="#inicio">Início</a>
-<a href="#categorias">Categorias</a>
-<a href="#produtos">Coleção</a>
-</div>
-</div>
-<div>
-<h4>ATENDIMENTO</h4>
-<div class="footer-links">
-<a href="#" onclick="abrirWhatsApp();return false;">WhatsApp</a>
-<a href="#">Trocas e devoluções</a>
-<a href="#">Entrega</a>
-</div>
-</div>
-<div>
-<h4>REDES SOCIAIS</h4>
-<div class="footer-links">
-<a href="#" onclick="abrirLink('instagram');return false;">Instagram</a>
-<a href="#" onclick="abrirLink('facebook');return false;">Facebook</a>
-<a href="#" onclick="abrirLink('tiktok');return false;">TikTok</a>
-</div>
-</div>
-</div>
-<div class="copyright">© 2026 FITSCULPT — Todos os direitos reservados.</div>
-</div>
+<footer>
+<p><strong>FITSCULPT</strong> | Moda Fitness</p>
+<p style="margin-top:12px">
+<a href="https://www.instagram.com/" target="_blank">Instagram</a>
+<a href="https://www.facebook.com/" target="_blank">Facebook</a>
+<a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+</p>
+<p style="margin-top:15px;font-size:12px">© 2026 FITSCULPT. Todos os direitos reservados.</p>
 </footer>
-
-<!-- CARRINHO -->
-<div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
-<div class="drawer" id="carrinho">
-<div class="drawer-head">
-<h3>Meu carrinho</h3>
-<button class="close" onclick="fecharCarrinho()">×</button>
-</div>
-<div class="drawer-body" id="itensCarrinho"></div>
-<div class="drawer-foot">
-<div class="total">
-<span>Total:</span>
-<span id="total">R$ 0,00</span>
-</div>
-<button class="btn btn-pink" style="width:100%" onclick="finalizarCompra()">FINALIZAR PEDIDO PELO WHATSAPP</button>
-</div>
-</div>
-
-<!-- MODAL DE PRODUTO -->
-<div class="modal" id="modal">
-<div class="modal-box">
-<button class="close modal-close" onclick="fecharModal()">×</button>
-<div id="detalhes"></div>
-</div>
-</div>
-
-<script>
-/* ======================================
-   CONFIGURAÇÕES DA FITSCULPT
-   ALTERE SEUS LINKS NESTA PARTE
-====================================== */
-
-const WHATSAPP = "5500000000000";
-
-const LINKS = {
-instagram:"https://www.instagram.com/",
-facebook:"https://www.facebook.com/",
-tiktok:"https://www.tiktok.com/"
-};
-
-/* ======================================
-   CADASTRO DOS PRODUTOS
-====================================== */
-
-const produtos = [
-{
-id:1,
-nome:"Legging Sculpt Cós Alto Black",
-categoria:"Leggings",
-preco:139.90,
-antigo:179.90,
-imagem:"https://images.pexels.com/photos/6456300/pexels-photo-6456300.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Legging fitness para acompanhar seus treinos com estilo e conforto.",
-badge:"Mais vendido"
-},
-{
-id:2,
-nome:"Top Nadador Active",
-categoria:"Tops",
-preco:79.90,
-antigo:99.90,
-imagem:"https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Top esportivo moderno para compor seus looks fitness.",
-badge:"Lançamento"
-},
-{
-id:3,
-nome:"Conjunto Seamless Fit",
-categoria:"Conjuntos",
-preco:199.90,
-antigo:259.90,
-imagem:"https://images.pexels.com/photos/8436550/pexels-photo-8436550.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Conjunto fitness para criar um visual completo.",
-badge:"Destaque"
-},
-{
-id:4,
-nome:"Short Biker Active Rose",
-categoria:"Shorts",
-preco:89.90,
-antigo:119.90,
-imagem:"https://images.pexels.com/photos/1537635/pexels-photo-1537635.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Short biker para caminhadas e atividades físicas.",
-badge:"Tendência"
-},
-{
-id:5,
-nome:"Legging Move Essential",
-categoria:"Leggings",
-preco:149.90,
-antigo:189.90,
-imagem:"https://images.pexels.com/photos/6456300/pexels-photo-6456300.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Uma peça essencial para seu guarda-roupa fitness.",
-badge:"Novidade"
-},
-{
-id:6,
-nome:"Top Cross Back Minimal",
-categoria:"Tops",
-preco:74.90,
-antigo:89.90,
-imagem:"https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Design esportivo minimalista.",
-badge:"Essencial"
-},
-{
-id:7,
-nome:"Conjunto Pro Active",
-categoria:"Conjuntos",
-preco:209.90,
-antigo:269.90,
-imagem:"https://images.pexels.com/photos/8436550/pexels-photo-8436550.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Conjunto coordenado para um visual fitness marcante.",
-badge:"Novo"
-},
-{
-id:8,
-nome:"Short Running Leve",
-categoria:"Shorts",
-preco:84.90,
-antigo:109.90,
-imagem:"https://images.pexels.com/photos/1537635/pexels-photo-1537635.jpeg?auto=compress&cs=tinysrgb&w=800",
-descricao:"Modelo esportivo para atividades ao ar livre.",
-badge:"Oferta"
-}
-];
-
-/* ======================================
-   VARIÁVEIS DA LOJA
-====================================== */
-
-let carrinho=[];
-let favoritos=[];
-let categoriaAtual="Todos";
-let produtoAtual=null;
-let tamanhoSelecionado="M";
-
-function moeda(valor){
-return valor.toLocaleString("pt-BR",{
-style:"currency",
-currency:"BRL"
-});
-}
-
-/* ======================================
-   MOSTRAR PRODUTOS
-====================================== */
-
-function renderizar(){
-
-let lista=produtos.filter(p=>
-categoriaAtual==="Todos" ||
-p.categoria===categoriaAtual
-);
-
-let ordem=document.getElementById("ordenar").value;
-
-if(ordem==="menor"){
-lista.sort((a,b)=>a.preco-b.preco);
-}
-
-if(ordem==="maior"){
-lista.sort((a,b)=>b.preco-a.preco);
-}
-
-let html="";
-
-lista.forEach(p=>{
-
-let favorito=favoritos.includes(p.id);
-
-html+=`
-<div class="product">
-
-<div class="product-image" onclick="abrirProduto(${p.id})">
-
-<img src="${p.imagem}" alt="${p.nome}">
-
-<span class="badge">${p.badge}</span>
-
-<button class="favorite ${favorito?'active':''}"
-onclick="event.stopPropagation();favoritar(${p.id})">
-${favorito?'♥':'♡'}
-</button>
-
-</div>
-
-<div class="product-info">
-
-<small>${p.categoria}</small>
-
-<h3>${p.nome}</h3>
-
-<div class="stars">★★★★★</div>
-
-<div class="product-bottom">
-
-<div>
-<div class="price">${moeda(p.preco)}</div>
-<div class="old-price">${moeda(p.antigo)}</div>
-</div>
-
-<button class="add"
-onclick="adicionar(${p.id})">+</button>
-
-</div>
-</div>
-</div>
-`;
-});
-
-document.getElementById("listaProdutos").innerHTML=
-html || "<p>Nenhum produto encontrado.</p>";
-
-}
-
-/* ======================================
-   FILTROS
-====================================== */
-
-function filtrar(categoria,botao){
-
-categoriaAtual=categoria;
-
-document.querySelectorAll(".filter").forEach(b=>{
-b.classList.remove("active");
-});
-
-if(botao){
-botao.classList.add("active");
-}else{
-document.querySelectorAll(".filter").forEach(b=>{
-if(b.textContent===categoria || categoria==="Todos" && b.textContent==="Todos"){
-b.classList.add("active");
-}
-});
-}
-
-renderizar();
-
-document.getElementById("produtos").scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-/* ======================================
-   FAVORITOS
-====================================== */
-
-function favoritar(id){
-
-if(favoritos.includes(id)){
-favoritos=favoritos.filter(x=>x!==id);
-}else{
-favoritos.push(id);
-}
-
-renderizar();
-}
-
-function mostrarFavoritos(){
-
-if(favoritos.length===0){
-alert("Você ainda não possui produtos favoritos.");
-return;
-}
-
-let nomes=favoritos.map(id=>{
-let p=produtos.find(x=>x.id===id);
-return p.nome+" — "+moeda(p.preco);
-});
-
-alert("SEUS FAVORITOS:\n\n"+nomes.join("\n"));
-
-}
-
-/* ======================================
-   ADICIONAR AO CARRINHO
-====================================== */
-
-function adicionar(id,tamanho="M"){
-
-let p=produtos.find(x=>x.id===id);
-
-let item=carrinho.find(x=>
-x.id===id && x.tamanho===tamanho
-);
-
-if(item){
-item.quantidade++;
-}else{
-carrinho.push({
-id:p.id,
-nome:p.nome,
-preco:p.preco,
-imagem:p.imagem,
-tamanho:tamanho,
-quantidade:1
-});
-}
-
-atualizarCarrinho();
-abrirCarrinho();
-
-}
-
-/* ======================================
-   ATUALIZAR CARRINHO
-====================================== */
-
-function atualizarCarrinho(){
-
-let quantidade=carrinho.reduce((s,x)=>s+x.quantidade,0);
-
-document.getElementById("contador").textContent=quantidade;
-
-let total=0;
-let html="";
-
-carrinho.forEach((item,i)=>{
-
-let subtotal=item.preco*item.quantidade;
-total+=subtotal;
-
-html+=`
-<div class="cart-item">
-
-<img src="${item.imagem}" alt="${item.nome}">
-
-<div class="cart-info">
-
-<b>${item.nome}</b>
-
-<p>Tamanho: ${item.tamanho}</p>
-
-<p>${moeda(subtotal)}</p>
-
-<div class="quantity">
-
-<button onclick="alterarQuantidade(${i},-1)">−</button>
-
-<span>${item.quantidade}</span>
-
-<button onclick="alterarQuantidade(${i},1)">+</button>
-
-<button class="remove"
-onclick="remover(${i})">Remover</button>
-
-</div>
-</div>
-</div>
-`;
-
-});
-
-document.getElementById("itensCarrinho").innerHTML=
-html || "<p style='text-align:center;padding:30px'>Seu carrinho está vazio.</p>";
-
-document.getElementById("total").textContent=moeda(total);
-
-}
-
-/* ======================================
-   QUANTIDADE E REMOÇÃO
-====================================== */
-
-function alterarQuantidade(i,valor){
-
-carrinho[i].quantidade+=valor;
-
-if(carrinho[i].quantidade<=0){
-carrinho.splice(i,1);
-}
-
-atualizarCarrinho();
-
-}
-
-function remover(i){
-
-carrinho.splice(i,1);
-atualizarCarrinho();
-
-}
-
-/* ======================================
-   ABRIR E FECHAR CARRINHO
-====================================== */
-
-function abrirCarrinho(){
-
-document.getElementById("carrinho").classList.add("show");
-document.getElementById("overlay").classList.add("show");
-
-}
-
-function fecharCarrinho(){
-
-document.getElementById("carrinho").classList.remove("show");
-document.getElementById("overlay").classList.remove("show");
-
-}
-
-/* ======================================
-   DETALHES DO PRODUTO
-====================================== */
-
-function abrirProduto(id){
-
-produtoAtual=produtos.find(x=>x.id===id);
-tamanhoSelecionado="M";
-
-let p=produtoAtual;
-
-document.getElementById("detalhes").innerHTML=`
-
-<div class="modal-product">
-
-<img src="${p.imagem}" alt="${p.nome}">
-
-<div>
-
-<small style="color:#f04478">${p.categoria}</small>
-
-<h2 style="margin:12px 0">${p.nome}</h2>
-
-<div class="stars">★★★★★</div>
-
-<h2 style="margin:15px 0">${moeda(p.preco)}</h2>
-
-<p style="font-size:13px;line-height:1.7">${p.descricao}</p>
-
-<strong>Selecione o tamanho:</strong>
-
-<div class="sizes">
-
-${["PP","P","M","G","GG"].map(t=>
-`<button class="size ${t==="M"?"active":""}"
-onclick="selecionarTamanho('${t}',this)">${t}</button>`
-).join("")}
-
-</div>
-
-<button class="btn btn-pink"
-style="width:100%"
-onclick="adicionarDoModal()">
-ADICIONAR AO CARRINHO
-</button>
-
-</div>
-</div>
-`;
-
-document.getElementById("modal").classList.add("show");
-
-}
-
-function selecionarTamanho(tamanho,botao){
-
-tamanhoSelecionado=tamanho;
-
-document.querySelectorAll(".size").forEach(b=>{
-b.classList.remove("active");
-});
-
-botao.classList.add("active");
-
-}
-
-function adicionarDoModal(){
-
-if(produtoAtual){
-adicionar(produtoAtual.id,tamanhoSelecionado);
-fecharModal();
-}
-
-}
-
-function fecharModal(){
-
-document.getElementById("modal").classList.remove("show");
-
-}
-
-/* ======================================
-   BUSCA
-====================================== */
-
-function buscar(){
-
-let termo=prompt("Digite o nome ou categoria do produto:");
-
-if(!termo)return;
-
-termo=termo.toLowerCase();
-
-let encontrados=produtos.filter(p=>
-p.nome.toLowerCase().includes(termo) ||
-p.categoria.toLowerCase().includes(termo)
-);
-
-if(encontrados.length===0){
-alert("Nenhum produto encontrado.");
-return;
-}
-
-categoriaAtual="Todos";
-
-document.querySelectorAll(".filter").forEach(b=>{
-b.classList.remove("active");
-});
-
-document.getElementById("listaProdutos").innerHTML=
-encontrados.map(p=>`
-<div class="product">
-<div class="product-image" onclick="abrirProduto(${p.id})">
-<img src="${p.imagem}" alt="${p.nome}">
-</div>
-<div class="product-info">
-<h3>${p.nome}</h3>
-<div class="price">${moeda(p.preco)}</div>
-<button class="add" onclick="adicionar(${p.id})">+</button>
-</div>
-</div>
-`).join("");
-
-document.getElementById("produtos").scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-/* ======================================
-   FINALIZAR PEDIDO PELO WHATSAPP
-====================================== */
-
-function finalizarCompra(){
-
-if(carrinho.length===0){
-alert("Seu carrinho está vazio.");
-return;
-}
-
-if(WHATSAPP==="5500000000000"){
-alert("Configure seu número de WhatsApp no código.");
-return;
-}
-
-let mensagem="*NOVO PEDIDO FITSCULPT*%0A%0A";
-
-carrinho.forEach((item,i)=>{
-
-mensagem+=
-(i+1)+". "+encodeURIComponent(item.nome)+
-"%0ATamanho: "+item.tamanho+
-"%0AQuantidade: "+item.quantidade+
-"%0AValor: "+encodeURIComponent(moeda(item.preco*item.quantidade))+
-"%0A%0A";
-
-});
-
-let total=carrinho.reduce((s,x)=>
-s+x.preco*x.quantidade,0);
-
-mensagem+="*TOTAL: "+encodeURIComponent(moeda(total))+"*";
-
-window.open(
-"https://wa.me/"+WHATSAPP+"?text="+mensagem,
-"_blank"
-);
-
-}
-
-/* ======================================
-   LINKS DAS REDES SOCIAIS
-====================================== */
-
-function abrirWhatsApp(){
-
-if(WHATSAPP==="5500000000000"){
-alert("Configure seu WhatsApp no código.");
-return;
-}
-
-window.open("https://wa.me/"+WHATSAPP,"_blank");
-
-}
-
-function abrirLink(rede){
-
-window.open(LINKS[rede],"_blank");
-
-}
-
-/* INICIAR LOJA */
-
-renderizar();
-atualizarCarrinho();
-
-</script>
 
 </body>
 </html>
